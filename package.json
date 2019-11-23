@@ -1,0 +1,24 @@
+{
+  "name": "@cwasm/nsbmp",
+  "version": "0.0.0",
+  "repository": "LinusU/cwasm-nsbmp",
+  "license": "MIT",
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "nsbmp.wasm"
+  ],
+  "scripts": {
+    "prepare": "make nsbmp.wasm",
+    "test": "make test"
+  },
+  "dependencies": {
+    "@canvas/image-data": "^1.0.0"
+  },
+  "devDependencies": {
+    "lodepng": "^2.0.0",
+    "mocha": "^5.2.0",
+    "standard": "^14.3.1",
+    "ts-readme-generator": "^0.2.0"
+  }
+}
