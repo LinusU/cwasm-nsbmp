@@ -24,9 +24,9 @@ RUN git clone git://git.netsurf-browser.org/libnsbmp.git && cd libnsbmp && git c
 ADD decode.c .
 
 # Relase build
-RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsbmp/include/ -Oz     -o libnsbmp.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_bmp,--strip-all -- decode.c libnsbmp/src/libnsbmp.c
+RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsbmp/include/ -flto -Oz     -o libnsbmp.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_bmp,--strip-all -- decode.c libnsbmp/src/libnsbmp.c
 
 # Debug build
-# RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsbmp/include/ -O0 -g3 -o libnsbmp.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_bmp,             -- decode.c libnsbmp/src/libnsbmp.c
+# RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsbmp/include/ -flto -O0 -g3 -o libnsbmp.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_bmp,             -- decode.c libnsbmp/src/libnsbmp.c
 
 CMD base64 --wrap=0 libnsbmp.wasm
