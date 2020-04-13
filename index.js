@@ -19,7 +19,7 @@ const stubs = {
 
 const code = fs.readFileSync(path.join(__dirname, 'nsbmp.wasm'))
 const wasmModule = new WebAssembly.Module(code)
-const instance = new WebAssembly.Instance(wasmModule, { env, wasi_unstable: stubs })
+const instance = new WebAssembly.Instance(wasmModule, { env, wasi_snapshot_preview1: stubs })
 
 exports.decode = function (input) {
   // Allocate memory to hand over the input data to WASM
