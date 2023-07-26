@@ -26,7 +26,7 @@ RUN curl -L https://github.com/WebAssembly/binaryen/releases/download/version_11
 
 WORKDIR /code
 
-RUN git clone git://git.netsurf-browser.org/libnsbmp.git && cd libnsbmp && git checkout release/0.1.5
+RUN git clone git://git.netsurf-browser.org/libnsbmp.git && cd libnsbmp && git checkout release/0.1.6
 ADD decode.c .
 
 # Relase build
